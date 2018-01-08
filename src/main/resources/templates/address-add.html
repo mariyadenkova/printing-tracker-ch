@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add Customer Address</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header th:replace="fragments/parts::menu">
+</header>
+<main>
+    <div class="container">
+        <h1>Add customer address!</h1>
+        <br/>
+        <form method="post" th:object="${addAddressBindingModel}">
+            <div class="form-group" th:classappend="${#fields.hasErrors('customers')} ? 'has-danger'">
+                <label for="inputCustomers">Customers: </label>
+                <select multiple="true" class="form-control form-control-danger" id="inputCustomers" name="customers" th:field="*{customers}">
+                    <option th:each="customer : ${customers}" th:value="${customer.name}" th:text="${customer.name}">Option 1</option>
+                </select>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('customers')}" th:text="${error}">Error Massage!</div>
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('street')} ? 'has-danger'">
+                <input type="text" class="form-control form-control-danger" id="inputStreet" name="street" th:field="*{street}" placeholder="street"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('street')}" th:text="${error}">Invalid street!</div>
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('businessCenterName')} ? 'has-danger'">
+                <input type="text" class="form-control form-control-danger" id="inputBusinessCenterName" name="businessCenterName" th:field="*{businessCenterName}" placeholder="businessCenterName"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('businessCenterName')}" th:text="${error}">Invalid businessCenterName!</div>
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('block')} ? 'has-danger'">
+                <input type="text" class="form-control form-control-danger" id="inputBlock" name="block" th:field="*{block}" placeholder="block"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('block')}" th:text="${error}">Invalid block!</div>
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('entrance')} ? 'has-danger'">
+                <input type="text" class="form-control form-control-danger" id="inputEntrance" name="entrance" th:field="*{entrance}" placeholder="entrance"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('entrance')}" th:text="${error}">Invalid entrance!</div>
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('floor')} ? 'has-danger'">
+                <input type="text" class="form-control form-control-danger" id="inputFloor" name="floor" th:field="*{floor}" placeholder="floor"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('floor')}" th:text="${error}">Invalid floor!</div>
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('appartmentN')} ? 'has-danger'">
+                <input type="text" class="form-control form-control-danger" id="inputAppartmentN" name="appartmentN" th:field="*{appartmentN}" placeholder="appartmentN"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('appartmentN')}" th:text="${error}">Invalid appartmentN!</div>
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('officeN')} ? 'has-danger'">
+                <input type="text" class="form-control form-control-danger" id="inputOfficeN" name="officeN" th:field="*{officeN}" placeholder="officeN"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('officeN')}" th:text="${error}">Invalid officeN!</div>
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('comment')} ? 'has-danger'">
+                <input type="text" class="form-control form-control-danger" id="inputComment" name="comment" th:field="*{comment}" placeholder="comment"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('comment')}" th:text="${error}">Invalid comment!</div>
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('contactName')} ? 'has-danger'">
+                <input type="text" class="form-control form-control-danger" id="inputContactName" name="contactName" th:field="*{contactName}" placeholder="contactName"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('contactName')}" th:text="${error}">Invalid contactName!</div>
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('phoneNumber')} ? 'has-danger'">
+                <input type="text" class="form-control form-control-danger" id="inputPhoneNumber" name="phoneNumber" th:field="*{phoneNumber}" placeholder="phoneNumber"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('phoneNumber')}" th:text="${error}">Invalid phoneNumber!</div>
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('email')} ? 'has-danger'">
+                <input type="text" class="form-control form-control-danger" id="inputEmail" name="email" th:field="*{email}" placeholder="email"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('email')}" th:text="${error}">Invalid email!</div>
+            </div>
+
+            <input type="submit" class="btn btn-success" value="Add Customer"/>
+        </form>
+    </div>
+</main>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

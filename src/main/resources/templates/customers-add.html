@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add Customer</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header th:replace="fragments/parts::menu">
+</header>
+<main>
+    <div class="container">
+        <h1>Add a new customer!</h1>
+        <br/>
+        <form method="post" th:object="${addCustomerBindingModel}">
+            <div class="form-group" th:classappend="${#fields.hasErrors('name')} ? 'has-danger'">
+                <input type="text" class="form-control form-control-danger" id="inputName" name="name" th:field="*{name}" placeholder="customer name"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('name')}" th:text="${error}">Invalid name!</div>
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('uic')} ? 'has-danger'">
+                <input type="text" class="form-control form-control-danger" id="inputUic" name="uic" th:field="*{uic}" placeholder="uic"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('uic')}" th:text="${error}">Invalid uic!</div>
+            </div>
+            <input type="submit" class="btn btn-success" value="Add Customer"/>
+        </form>
+    </div>
+</main>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Register</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header th:replace="fragments/parts::menu">
+</header>
+<main>
+    <div class="container">
+        <h1>Register Page</h1>
+        <form method="post" th:object="${registrationModel}">
+        <div class="form-group" th:classappend="${#fields.hasErrors('username')} ? 'has-danger'">
+            <label for="inputUsername" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control form-control-danger" id="inputUsername" name="username" th:field="*{username}" placeholder="name@example.com"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('username')}" th:text="${error}">Sorry, that username's taken. Try another?</div>
+                <small class="form-text text-muted">Please, enter a valid and not registered e-mail address!</small>
+            </div>
+        </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('password')} ? 'has-danger'">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control form-control-danger" id="inputPassword" th:field="*{password}" placeholder="password"/>
+                    <div class="form-control-feedback" th:each="error : ${#fields.errors('password')}" th:text="${error}">Sorry, that password is not valid!</div>
+                    <small class="form-text text-muted">Please, enter a password ....!</small>
+                </div>
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('global')} ? 'has-danger'">
+                <label for="inputConfirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control form-control-danger" id="inputConfirmPassword" th:field="*{confirmPassword}" placeholder="password"/>
+                    <div class="form-control-feedback" th:each="error : ${#fields.errors('global')}" th:text="${error}">The password is not matching!</div>
+                    <small class="form-text text-muted">Please, reenter the password!</small>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-success" value="Register"/>
+        </form>
+    </div>
+</main>
+    <script th:src="@{/jquery/jquery.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

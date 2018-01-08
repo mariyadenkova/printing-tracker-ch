@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Customers</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css"
+          th:href="@{bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header th:replace="fragments/parts::menu">
+</header>
+<main>
+    <div class="container-fluid">
+    <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+        <h1>All Customers</h1>
+        <a id="addCustomerButton" href="#" class="text-gray-dark">
+            + Add Customer
+        </a>
+        <div id="addCustomerInputs">
+            <div class="row">
+                <input id="newInputCustomerName" class="form-control col-sm-6" placeholder="customer name"/>
+                <input id="newInputCustomerUic" class="form-control col-sm-3" placeholder="uic"/>
+            </div>
+            <div class="row">
+                <a id="btnSave" href="customers#" class="btn btn-outline-secondary">Save</a>
+                <a id="btnCancel" href="#" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </div>
+    <br/>
+    <div id="customersList">
+
+    </div>
+
+    <!--<div class="container">
+        <br/>
+            <a class="btn btn-secondary" th:href="|/customers/add|">Add a new customer</a>
+        <br/>
+        <div class="h1">All Customers</div>
+        <br/>
+        <table id="customersTable" class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>UIC</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="customer : ${customers}" th:object="${customer}">
+                <td th:text="*{name}">name</td>
+                <td th:text="*{uic}">uic</td>
+                <td>
+                   <a class="btn btn-secondary" th:href="|/customers/edit/*{id}|">Edit</a>
+                </td>
+                <td>
+                    <a class="btn btn-secondary" th:href="|/customers/delete/*{id}|">Delete</a>
+                </td>
+                <td>
+                    <a class="btn btn-secondary" th:href="|/customers/address/*{id}|">View Address</a>
+                </td>
+            </tr>
+            </tbody
+        </table>!-->
+
+</main>
+    </div>
+</main>
+</body>
+<script th:src="@{jquery/jquery.min.js}"></script>
+<script th:src="@{bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript">
+
+    $(function () {
+        //loadJSONCustomers();
+        hideAddCustomerInputs();
+        $('#btnSave').click(saveCustomer);
+        $('#btnCancel').click(hideAddCustomerInputs);
+        $('#addCustomerButton').click(showAddCustomerInputs);
+    });
+
+    //Show Add Items
+    function showAddCustomerInputs() {
+        $('#addCustomerInputs').show();
+    }
+
+    //Hide Add Items
+    function hideAddCustomerInputs() {
+
+        $('#addCustomerInputs').hide();
+    }
+
+    //Save the Customer
+    function saveCustomer() {
+        var customer = {};
+        customer.name = $('#newInputCustomerName').val();
+        customer.uic = $('#newInputCustomerUic').val();
+        $.ajax({
+           type: 'POST',
+            url: '/customers',
+            data: JSON.stringify(customer),
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (customer) {
+                addCustomerDOM(customer);
+            }
+        });
+    }
+
+    //Add Customers to DOM
+    function addCustomerDOM(customer) {
+        var id = customer.id;
+        var name = customer.name;
+        var uic = customer.uic;
+        $('#customersList').append(
+            $('<div></div>')
+                .addClass('row')
+                .attr('cutomerid', id)
+                .append($('<input/>')
+                            .addClass('form-control col-sm-6')
+                            .val(name))
+                .append($('<input/>')
+                        .addClass('form-control col-sm-3')
+                        .val(uic))
+            );
+    }
+
+   /* function loadJSONCustomers() {
+        $.ajax({
+            type: 'GET',
+            url: '/allCustomers',
+            data: 'json',
+            success: function (customers) {
+                loadAllCustomers(customers);
+            }
+        });
+        
+    }
+
+    function loadAllCustomers() {
+        $.each(customers, function (i, customer) {
+            var customerName = customer.name;
+            var customerUic = customer.uic;
+            $('#customersList').append(
+                $('<div></div>')
+                    .val(customerName)
+                    .val(customerUic))
+        });
+    }*/
+
+</script>
+</html>
