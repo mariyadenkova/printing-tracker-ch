@@ -18,21 +18,10 @@ public class AddCustomerBindingModel {
     @Size(min = 9, message = "Invalid uic")
     private String uic;
 
-    //private Set<AddressBindingModel> addresses;
+
 
     public AddCustomerBindingModel() {
     }
-
-    /*public AddCustomerBindingModel(String name, String uic) {
-        this.name = name;
-        this.uic = uic;
-    }
-
-    public AddCustomerBindingModel(String name, String uic, Set<AddressBindingModel> addresses) {
-        this.name = name;
-        this.uic = uic;
-        this.addresses = addresses;
-    }*/
 
     public String getName() {
         return name;
@@ -50,11 +39,5 @@ public class AddCustomerBindingModel {
         this.uic = uic;
     }
 
-    /*public Set<AddressBindingModel> getAddresses() {
-        return addresses;
-    }
 
-    public void setAddresses(Set<AddressBindingModel> addresses) {
-        this.addresses = addresses;
-    }*/
 }

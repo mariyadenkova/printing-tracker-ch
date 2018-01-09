@@ -20,36 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Set;
 
-@RestController
-@RequestMapping("/allCustomers")
-public class CustomerController {
-
-    @Autowired
-    private CustomerService customerService;
-
-    @GetMapping("")
-    public ResponseEntity<Set<CustomerViewModel>> getCustomerPage(){
-        Set<CustomerViewModel> customers = this.customerService.getAllCustomers();
-
-        if(customers == null) {
-            return new ResponseEntity<Set<CustomerViewModel>>(HttpStatus.NOT_FOUND);
-        }
-
-        ResponseEntity<Set<CustomerViewModel>> responseEntity = new ResponseEntity(customers, HttpStatus.OK);
-
-        return responseEntity;
-    }
-
-    @PostMapping("")
-    public ResponseEntity<CustomerViewModel> saveCustomer(@RequestBody CustomerBindingModel customerBindingModel) {
-        CustomerViewModel customerViewModel = this.customerService.save(customerBindingModel);
-
-        return new ResponseEntity(customerViewModel, HttpStatus.OK);
-    }
-
-}
-
-/*@Controller
+@Controller
 @RequestMapping("/customers")
 public class CustomerController {
 
@@ -82,4 +53,35 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
+}
+
+/*@RestController
+@RequestMapping("/allCustomers")
+public class CustomerController {
+
+    @Autowired
+    private CustomerService customerService;
+
+    @GetMapping("")
+    public ResponseEntity<Set<CustomerViewModel>> getCustomerPage(){
+        Set<CustomerViewModel> customers = this.customerService.getAllCustomers();
+
+        if(customers == null) {
+            return new ResponseEntity<Set<CustomerViewModel>>(HttpStatus.NOT_FOUND);
+        }
+
+        ResponseEntity<Set<CustomerViewModel>> responseEntity = new ResponseEntity(customers, HttpStatus.OK);
+
+        return responseEntity;
+    }
+
+    @PostMapping("")
+    public ResponseEntity<CustomerViewModel> saveCustomer(@RequestBody CustomerBindingModel customerBindingModel) {
+        CustomerViewModel customerViewModel = this.customerService.save(customerBindingModel);
+
+        return new ResponseEntity(customerViewModel, HttpStatus.OK);
+    }
+
 }*/
+
+

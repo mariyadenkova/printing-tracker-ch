@@ -10,28 +10,7 @@
 <header th:replace="fragments/parts::menu">
 </header>
 <main>
-    <div class="container-fluid">
-    <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-        <h1>All Customers</h1>
-        <a id="addCustomerButton" href="#" class="text-gray-dark">
-            + Add Customer
-        </a>
-        <div id="addCustomerInputs">
-            <div class="row">
-                <input id="newInputCustomerName" class="form-control col-sm-6" placeholder="customer name"/>
-                <input id="newInputCustomerUic" class="form-control col-sm-3" placeholder="uic"/>
-            </div>
-            <div class="row">
-                <a id="btnSave" href="customers#" class="btn btn-outline-secondary">Save</a>
-                <a id="btnCancel" href="#" class="btn btn-outline-secondary">Cancel</a>
-            </div>
-        </div>
-    <br/>
-    <div id="customersList">
-
-    </div>
-
-    <!--<div class="container">
+    <div class="container">
         <br/>
             <a class="btn btn-secondary" th:href="|/customers/add|">Add a new customer</a>
         <br/>
@@ -58,16 +37,38 @@
                     <a class="btn btn-secondary" th:href="|/customers/address/*{id}|">View Address</a>
                 </td>
             </tr>
-            </tbody
-        </table>!-->
+            </tbody>
+        </table>
 
-</main>
+    <!--<div class="container-fluid">
+        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+            <h1>All Customers</h1>
+            <a id="addCustomerButton" href="#" class="text-gray-dark">
+                + Add Customer
+            </a>
+            <div id="addCustomerInputs">
+                <div class="row">
+                    <input id="newInputCustomerName" class="form-control col-sm-6" placeholder="customer name"/>
+                    <input id="newInputCustomerUic" class="form-control col-sm-3" placeholder="uic"/>
+                </div>
+                <div class="row">
+                    <a id="btnSave" href="customers#" class="btn btn-outline-secondary">Save</a>
+                    <a id="btnCancel" href="#" class="btn btn-outline-secondary">Cancel</a>
+                </div>
+            </div>
+            <br/>
+            <div id="customersList">
+            </div>
+        </main>
+    </div>!-->
+
     </div>
 </main>
 </body>
 <script th:src="@{jquery/jquery.min.js}"></script>
 <script th:src="@{bootstrap/js/bootstrap.min.js}"></script>
-<script type="text/javascript">
+
+<!--<script type="text/javascript">
 
     $(function () {
         //loadJSONCustomers();
@@ -146,5 +147,5 @@
         });
     }*/
 
-</script>
+</script>!-->
 </html>

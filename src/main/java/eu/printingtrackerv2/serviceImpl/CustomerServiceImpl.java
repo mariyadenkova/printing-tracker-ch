@@ -32,13 +32,19 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private ModelMapper modelMapper;
 
-    @Override
+    /*@Override
     @Transactional
     public CustomerViewModel save(CustomerBindingModel customerBindingModel) {
         Customer customer = this.modelMapper.map(customerBindingModel, Customer.class);
         this.customerRepository.save(customer);
         CustomerViewModel customerViewModel = this.modelMapper.map(customer, CustomerViewModel.class);
         return customerViewModel;
+    }*/
+
+    @Override
+    public void save(AddCustomerBindingModel addCustomerBindingModel) {
+        Customer customer = this.modelMapper.map(addCustomerBindingModel, Customer.class);
+        this.customerRepository.save(customer);
     }
 
     @Override

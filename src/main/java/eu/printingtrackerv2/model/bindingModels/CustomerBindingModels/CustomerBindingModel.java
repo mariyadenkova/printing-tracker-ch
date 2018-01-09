@@ -7,6 +7,8 @@ public class CustomerBindingModel {
 
     private String name;
 
+    //private Set<AddressBindingModel> addresses;
+
     public Long getId() {
         return id;
     }

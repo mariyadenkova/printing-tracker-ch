@@ -15,7 +15,7 @@ public class CustomerViewModel {
 
     private String uic;
 
-    //private Set<Address> addresses;
+    private Set<AddressViewModel> addresses;
 
     public CustomerViewModel() {
     }

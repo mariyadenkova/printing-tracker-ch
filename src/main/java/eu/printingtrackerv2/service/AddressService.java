@@ -1,6 +1,7 @@
 package eu.printingtrackerv2.service;
 
 
+import eu.printingtrackerv2.entities.Address;
 import eu.printingtrackerv2.model.bindingModels.AddressBindingModels.AddAddressBindingModel;
 import eu.printingtrackerv2.model.bindingModels.AddressBindingModels.AddressBindingModel;
 import eu.printingtrackerv2.model.viewModels.addressViewModels.AddressViewModel;
@@ -14,5 +15,6 @@ public interface AddressService {
 
     Set<AddressViewModel> findAllAddresses();
 
+    Set<AddressViewModel> findAllAddressesByCustomerId(Long id);
 
 }
