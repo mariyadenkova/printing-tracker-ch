@@ -15,9 +15,11 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
     @Query(value = "SELECT c FROM Customer AS c")
     Set<Customer> findAllCustomers();
 
-    @Query(value = "SELECT n FROM Customer AS n WHERE n.id = :id")
-    String findCustomersById(String name);
+    /*@Query(value = "SELECT n FROM Customer AS n WHERE n.id = :id")
+    String findCustomersById(String name);*/
 
     Set<Customer> findAllByNameIn(String[] names);
+
+    Customer findOneByName(String name);
 
 }

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -40,6 +41,13 @@ public class AddressController {
         Set<AddressViewModel> addresses = this.addressService.findAllAddresses();
         model.addAttribute("addresses", addresses);
         return "address";
+    }
+
+    @GetMapping("/address/customer/{customerId}")
+    public String getCustomerAddressesPage(Model model, @PathVariable Long customerId) {
+        Set<AddressViewModel> addresses = this.addressService.findAllAddressesByCustomerId(customerId);
+        model.addAttribute("addresses", addresses);
+        return "address-customer";
     }
 
     @GetMapping("/address/add")

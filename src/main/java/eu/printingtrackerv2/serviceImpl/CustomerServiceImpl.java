@@ -5,6 +5,7 @@ import eu.printingtrackerv2.entities.Address;
 import eu.printingtrackerv2.entities.Customer;
 import eu.printingtrackerv2.model.bindingModels.CustomerBindingModels.AddCustomerBindingModel;
 import eu.printingtrackerv2.model.bindingModels.CustomerBindingModels.CustomerBindingModel;
+import eu.printingtrackerv2.model.viewModels.addressViewModels.AddressViewModel;
 import eu.printingtrackerv2.model.viewModels.customerViewModels.CustomerNameViewModel;
 import eu.printingtrackerv2.model.viewModels.customerViewModels.CustomerViewModel;
 import eu.printingtrackerv2.repository.AddressRepository;
@@ -70,5 +71,8 @@ public class CustomerServiceImpl implements CustomerService {
         return customerModels;
     }
 
-
+    @Override
+    public Customer findOneByName(String name) {
+        return this.customerRepository.findOneByName(name);
+    }
 }

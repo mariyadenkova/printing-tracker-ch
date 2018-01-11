@@ -8,6 +8,8 @@ import java.util.Set;
 public class AddressViewModel {
     private Long id;
 
+    //private String customerName;
+
     //private String city;
 
     private String street;
@@ -135,4 +137,12 @@ public class AddressViewModel {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    /*public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }*/
 }

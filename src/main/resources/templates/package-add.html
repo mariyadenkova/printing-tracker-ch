@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add Package</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header th:replace="fragments/parts::menu">
+</header>
+<main>
+    <div class="container">
+        <br/>
+        <h2>Add a new package!</h2>
+        <form method="post" th:object="${addPackageBindingModel}">
+            <div class="form-group row" th:classappend="${#fields.hasErrors('numbersMonoInPackage')} ? 'has-danger'">
+                <label for="inputMonoNumInP" class="col-4 col-form-label">Mono Copies in Package</label>
+                <div class="col-10">
+                    <input type="number" class="form-control-danger" id="inputMonoNumInP" name="numbersMonoInPackage" th:field="*{numbersMonoInPackage}"/>
+                </div>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('numbersMonoInPackage')}" th:text="${error}">Invalid number!</div>
+            </div>
+
+            <label for="inputMonoPackPrice">Price of the Monochrome Package</label>
+            <div class="input-group" th:classappend="${#fields.hasErrors('priceMonoPackage')} ? 'has-danger'">
+                <span class="input-group-addon">BGN</span>
+                <span class="input-group-addon">0.00</span>
+                    <input type="number" step="0.01" min="0" class="form-control-danger" id="inputMonoPackPrice" name="priceMonoPackage" th:field="*{priceMonoPackage}" aria-describedby="inputMonoPackPrice"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('priceMonoPackage')}" th:text="${error}">Invalid price!</div>
+            </div>
+            <br/>
+            <label for="inputMonoPackCopy">Price 1 Mono Copy Over Package</label>
+            <div class="input-group" th:classappend="${#fields.hasErrors('priceMonoCopyOverP')} ? 'has-danger'">
+                <span class="input-group-addon">BGN</span>
+                <span class="input-group-addon">0.00</span>
+                <input type="number" step="0.001" min="0" class="form-control-danger" id="inputMonoPackCopy" name="priceMonoCopyOverP" th:field="*{priceMonoCopyOverP}" aria-describedby="inputMonoPackCopy"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('priceMonoCopyOverP')}" th:text="${error}">Invalid price!</div>
+            </div>
+
+            <div class="form-group row" th:classappend="${#fields.hasErrors('numbersColorInPackage')} ? 'has-danger'">
+                <label for="inputColorNumInP" class="col-4 col-form-label">Color Copies in Package</label>
+                <div class="col-10">
+                    <input type="number" class="form-control-danger" id="inputColorNumInP" name="numbersColorInPackage" th:field="*{numbersColorInPackage}"/>
+                </div>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('numbersColorInPackage')}" th:text="${error}">Invalid number!</div>
+            </div>
+
+            <label for="inputColorPackPrice">Price of the Color Package</label>
+            <div class="input-group" th:classappend="${#fields.hasErrors('priceColorPackage')} ? 'has-danger'">
+                <span class="input-group-addon">BGN</span>
+                <span class="input-group-addon">0.00</span>
+                <input type="number" class="form-control-danger" id="inputColorPackPrice" name="priceColorPackage" th:field="*{priceColorPackage}" aria-describedby="inputColorPackPrice"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('priceColorPackage')}" th:text="${error}">Invalid price!</div>
+            </div>
+            <br/>
+            <label for="inputMonoPackCopy">Price 1 Color Copy Over Package</label>
+            <div class="input-group" th:classappend="${#fields.hasErrors('priceColorCopyOverP')} ? 'has-danger'">
+                <span class="input-group-addon">BGN</span>
+                <span class="input-group-addon">0.00</span>
+                <input type="number" class="form-control-danger" id="inputColorPackCopy" name="priceColorCopyOverP" th:field="*{priceColorCopyOverP}" aria-describedby="inputColorPackCopy"/>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('priceColorCopyOverP')}" th:text="${error}">Invalid price!</div>
+            </div>
+            <br/>
+            <input type="submit" class="btn btn-success" value="Add Package"/>
+            <br/>
+            <br/>
+        </form>
+    </div>
+</main>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

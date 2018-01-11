@@ -1,8 +1,10 @@
 package eu.printingtrackerv2.service;
 
 
+import eu.printingtrackerv2.entities.Customer;
 import eu.printingtrackerv2.model.bindingModels.CustomerBindingModels.AddCustomerBindingModel;
 import eu.printingtrackerv2.model.bindingModels.CustomerBindingModels.CustomerBindingModel;
+import eu.printingtrackerv2.model.viewModels.addressViewModels.AddressViewModel;
 import eu.printingtrackerv2.model.viewModels.customerViewModels.CustomerNameViewModel;
 import eu.printingtrackerv2.model.viewModels.customerViewModels.CustomerViewModel;
 
@@ -15,5 +17,7 @@ public interface CustomerService {
     Set<CustomerViewModel> getAllCustomers();
 
     Set<CustomerNameViewModel> getAllCustomersNames();
+
+    Customer findOneByName(String name);
 
 }

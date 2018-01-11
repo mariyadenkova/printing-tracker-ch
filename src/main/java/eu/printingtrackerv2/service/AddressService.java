@@ -15,6 +15,6 @@ public interface AddressService {
 
     Set<AddressViewModel> findAllAddresses();
 
-    Set<AddressViewModel> findAllAddressesByCustomerId(Long id);
+    Set<AddressViewModel> findAllAddressesByCustomerId(Long customerId);
 
 }

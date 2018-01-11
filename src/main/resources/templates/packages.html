@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Packages</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css"
+          th:href="@{bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header th:replace="fragments/parts::menu">
+</header>
+<main>
+    <div class="container">
+        <br/>
+            <a class="btn btn-secondary" th:href="|/packages/add|">Add Package</a>
+        <br/>
+        <div class="h1">All Packages</div>
+        <br/>
+        <br/>
+        <table id="packagesTable" class="table">
+            <thead>
+            <tr>
+                <th>Mono Copies in Package</th>
+                <th>Price of the Monochrome Package</th>
+                <th>Price 1 Mono Copy Over Package</th>
+                <th>Color Copies in Package</th>
+                <th>Price of the Color Package</th>
+                <th>Price 1 Color Copy Over Package</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="package : ${packages}" th:object="${package}">
+                <td th:text="*{numbersMonoInPackage}">Mono Copies in Package</td>
+                <td th:text="*{priceMonoPackage}">Price of the Monochrome Package</td>
+                <td th:text="*{priceMonoCopyOverP}">Price 1 Mono Copy Over Package</td>
+                <td th:text="*{numbersColorInPackage}">Color Copies in Package</td>
+                <td th:text="*{priceColorPackage}">Price of the Color Package</td>
+                <td th:text="*{priceColorCopyOverP}">Price 1 Color Copy Over Package</td>
+                <td>
+                   <a class="btn btn-secondary" th:href="|/packages/edit/*{id}|">Edit</a>
+                </td>
+                <td>
+                    <a class="btn btn-secondary" th:href="|/packages/delete/*{id}|">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>
