@@ -1,6 +1,7 @@
 package eu.printingtrackerv2.entities;
 
 //import eu.printingtrackerv2.annotations.Unique;
+import eu.printingtrackerv2.model.bindingModels.PackageBindingModels.AddPackageBindingModel;
 import eu.printingtrackerv2.service.UserService;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,6 +19,12 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    private String firstName;
+
+    private String lastName;
+
+    private String phoneNumber;
+
     //@Unique(service = UserService.class, fieldName = "username", message = "{username.unique.violation}")
     private String username;
 
@@ -28,6 +35,10 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
     private Set<Message> messages;
+
+    @ManyToOne()
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
 
     private boolean isAccountNonExpired;
 
@@ -42,6 +53,9 @@ public class User implements UserDetails {
     joinColumns = @JoinColumn(name = "user_id"),
     inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> authorities;
+
+    public User() {
+    }
 
     @Override //roles
     public Set<Role> getAuthorities() {
@@ -128,5 +142,37 @@ public class User implements UserDetails {
 
     public void setMessages(Set<Message> messages) {
         this.messages = messages;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

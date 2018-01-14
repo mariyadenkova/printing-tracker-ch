@@ -20,8 +20,8 @@ public class AddPackageBindingModel {
     private double priceMonoPackage;
 
     @NotNull(message = "Invalid input")
-    @DecimalMin("0.001")
-    private double priceMonoCopyOverP;
+    @DecimalMin("0.001") //doesn't work to the 3d point
+    private float priceMonoCopyOverP;
 
     private Long numbersColorInPackage;
 
@@ -56,11 +56,11 @@ public class AddPackageBindingModel {
         this.priceMonoPackage = priceMonoPackage;
     }
 
-    public double getPriceMonoCopyOverP() {
+    public float getPriceMonoCopyOverP() {
         return priceMonoCopyOverP;
     }
 
-    public void setPriceMonoCopyOverP(double priceMonoCopyOverP) {
+    public void setPriceMonoCopyOverP(float priceMonoCopyOverP) {
         this.priceMonoCopyOverP = priceMonoCopyOverP;
     }
 

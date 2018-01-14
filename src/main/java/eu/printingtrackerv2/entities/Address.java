@@ -34,11 +34,8 @@ public class Address {
 
     private String comment;
 
-    private String contactName;
-
-    private String phoneNumber;
-
-    private String email;
+    @OneToMany(mappedBy = "address", orphanRemoval = true, cascade = CascadeType.ALL)
+    private Set<User> users;
 
     @OneToMany (mappedBy = "address", orphanRemoval = true, cascade = CascadeType.ALL)
     private Set<PrintingDevice> printingDevices;
@@ -132,28 +129,12 @@ public class Address {
         this.comment = comment;
     }
 
-    public String getContactName() {
-        return contactName;
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public void setContactName(String contactName) {
-        this.contactName = contactName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     public Set<Customer> getCustomers() {

@@ -52,20 +52,16 @@
                 <input type="text" class="form-control form-control-danger" id="inputComment" name="comment" th:field="*{comment}" placeholder="comment"/>
                 <div class="form-control-feedback" th:each="error : ${#fields.errors('comment')}" th:text="${error}">Invalid comment!</div>
             </div>
-            <div class="form-group" th:classappend="${#fields.hasErrors('contactName')} ? 'has-danger'">
-                <input type="text" class="form-control form-control-danger" id="inputContactName" name="contactName" th:field="*{contactName}" placeholder="contactName"/>
-                <div class="form-control-feedback" th:each="error : ${#fields.errors('contactName')}" th:text="${error}">Invalid contactName!</div>
-            </div>
-            <div class="form-group" th:classappend="${#fields.hasErrors('phoneNumber')} ? 'has-danger'">
-                <input type="text" class="form-control form-control-danger" id="inputPhoneNumber" name="phoneNumber" th:field="*{phoneNumber}" placeholder="phoneNumber"/>
-                <div class="form-control-feedback" th:each="error : ${#fields.errors('phoneNumber')}" th:text="${error}">Invalid phoneNumber!</div>
-            </div>
-            <div class="form-group" th:classappend="${#fields.hasErrors('email')} ? 'has-danger'">
-                <input type="text" class="form-control form-control-danger" id="inputEmail" name="email" th:field="*{email}" placeholder="email"/>
-                <div class="form-control-feedback" th:each="error : ${#fields.errors('email')}" th:text="${error}">Invalid email!</div>
+
+            <div class="form-group" th:classappend="${#fields.hasErrors('users')} ? 'has-danger'">
+                <label for="inputUsers">Users: </label>
+                <select multiple="true" class="form-control form-control-danger" id="inputUsers" name="users" th:field="*{users}">
+                    <option th:each="user : ${users}" th:value="${user.username}" th:text="${user.username}">Option 1</option>
+                </select>
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('users')}" th:text="${error}">Error Massage!</div>
             </div>
 
-            <input type="submit" class="btn btn-success" value="Add Customer"/>
+            <input type="submit" class="btn btn-success" value="Add Address"/>
         </form>
     </div>
 </main>

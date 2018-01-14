@@ -26,12 +26,6 @@ public class AddressBindingModel {
 
     private String comment;
 
-    private String contactName;
-
-    private String phoneNumber;
-
-    private String email;
-
     public AddressBindingModel() {
     }
 
@@ -113,29 +107,5 @@ public class AddressBindingModel {
 
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    public String getContactName() {
-        return contactName;
-    }
-
-    public void setContactName(String contactName) {
-        this.contactName = contactName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

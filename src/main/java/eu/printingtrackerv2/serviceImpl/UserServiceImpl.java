@@ -3,6 +3,7 @@ package eu.printingtrackerv2.serviceImpl;
 import eu.printingtrackerv2.configuration.Errors;
 import eu.printingtrackerv2.entities.User;
 import eu.printingtrackerv2.model.bindingModels.RegistrationModel;
+import eu.printingtrackerv2.model.viewModels.userViewModel.AddUserToAddressViewModel;
 import eu.printingtrackerv2.repository.UserRepository;
 import eu.printingtrackerv2.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -13,6 +14,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -47,4 +50,16 @@ public class UserServiceImpl implements UserService {
         }
         return user;
     }
+
+    @Override
+    public Set<AddUserToAddressViewModel> findAllUsernames() {
+        Set<AddUserToAddressViewModel> addUserModels = new HashSet<>();
+        Set<User> users = this.userRepository.findAllUsers();
+        for (User user : users) {
+            AddUserToAddressViewModel viewModel = this.modelMapper.map(user, AddUserToAddressViewModel.class);
+            addUserModels.add(viewModel);
+        }
+        return addUserModels;
+    }
+
 }

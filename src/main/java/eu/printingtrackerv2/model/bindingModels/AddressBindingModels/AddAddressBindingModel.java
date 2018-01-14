@@ -1,6 +1,7 @@
 package eu.printingtrackerv2.model.bindingModels.AddressBindingModels;
 
 import eu.printingtrackerv2.entities.Customer;
+import eu.printingtrackerv2.entities.User;
 import eu.printingtrackerv2.model.bindingModels.CityBindingModels.CityBindingModel;
 import eu.printingtrackerv2.model.bindingModels.CustomerBindingModels.CustomerBindingModel;
 import eu.printingtrackerv2.model.viewModels.customerViewModels.CustomerViewModel;
@@ -35,11 +36,8 @@ public class AddAddressBindingModel {
 
     private String comment;
 
-    private String contactName;
-
-    private String phoneNumber;
-
-    private String email;
+    @NotEmpty(message = "You must select at least one username!")
+    private String[] users;
 
     public AddAddressBindingModel() {
     }
@@ -116,27 +114,11 @@ public class AddAddressBindingModel {
         this.comment = comment;
     }
 
-    public String getContactName() {
-        return contactName;
+    public String[] getUsers() {
+        return users;
     }
 
-    public void setContactName(String contactName) {
-        this.contactName = contactName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsers(String[] users) {
+        this.users = users;
     }
 }
